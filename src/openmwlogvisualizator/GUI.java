@@ -50,6 +50,8 @@ public class GUI extends JPanel implements MapStateChangeListener {
      */
     private BufferedImage img;
 
+     private volatile BufferedImage caveImage;
+    
     ImageOutputStream output;
     /**
      * gif output stream
@@ -75,6 +77,7 @@ public class GUI extends JPanel implements MapStateChangeListener {
             gifImage = ImageIO.read(new File(mapLocation));
             gifOriginalImage = ImageIO.read(new File(mapLocation));
             mapImage = ImageIO.read(new File(mapLocation));
+            caveImage = ImageIO.read(new File(caveLocation));
             output = new FileImageOutputStream(new File(gifLocation));
             writer = new GifSequenceWriter(output, gifImage.getType(), 100, true);
             writer.writeToSequence(gifImage);
@@ -151,6 +154,32 @@ public class GUI extends JPanel implements MapStateChangeListener {
             }
             Graphics gif = gifImage.createGraphics();
             g.drawImage(mapImage, 0, 0, this);
+            
+            if (Map.getMap().getLocation() !="" ){
+                String name = Map.getMap().getLocation();
+                
+                g.setColor(Color.white);
+                g.setFont(new Font("SansSerif", Font.BOLD, 18)); 
+                g.drawImage(caveImage, 200, 200, this);
+                g.drawString("Entering " + name, 250, 570);
+                
+                if (WRITE_TO_GIF){
+                    gif.setColor(Color.white);
+                    gif.setFont(new Font("SansSerif", Font.BOLD, 18)); 
+                    gif.drawImage(caveImage, 200, 200, this);
+                    gif.drawString("Entering " + name, 250, 570);
+                    
+                }
+                
+                Map.getMap().setLocation("");
+                
+                
+                
+                
+            }
+            else
+            {
+            
             for (int i = 0; i < Map.ROWS; i++) {
                 for (int j = 0; j < Map.COLUMNS; j++) {
                     if (Map.getMap().getCell(i, j)) {
@@ -160,6 +189,8 @@ public class GUI extends JPanel implements MapStateChangeListener {
                         }
                     }
                 }
+            
+            }
             }
             if (WRITE_TO_GIF) {
                 writer.writeToSequence(gifImage);

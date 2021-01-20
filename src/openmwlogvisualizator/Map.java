@@ -8,6 +8,7 @@ import java.util.*;
 public class Map {
     
     private static Map mapInstance;
+    private volatile String currentLocation = ""; 
     
     public static synchronized Map getMap(){
         if (mapInstance == null) {
@@ -52,6 +53,15 @@ public class Map {
         newCoords[0] = -(y-25);
         newCoords[1] = x+15;
         return newCoords;
+    }
+    
+    public synchronized void setLocation(String newLocation){
+        this.currentLocation = newLocation;
+        System.out.println(newLocation);
+    }
+    
+    public synchronized String getLocation(){
+        return currentLocation;
     }
     
     public void addListener(MapStateChangeListener x){

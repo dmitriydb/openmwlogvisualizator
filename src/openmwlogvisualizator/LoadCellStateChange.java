@@ -27,7 +27,6 @@ public class LoadCellStateChange extends MapStateChange{
       
         Map.getMap().loadCell(convertedCoords[0], convertedCoords[1]);
         Map.getMap().notifyListeners();
-        GUI.getGUI().repaint();
         
         Thread.sleep(100);
         }

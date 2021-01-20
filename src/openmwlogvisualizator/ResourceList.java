@@ -15,7 +15,7 @@ public class ResourceList {
     /**
      * map file location
      */
-    public static String mapLocation = "map.png";
+    public static String mapLocation = "map.jpg";
     /**
      * marker file location
      */
@@ -33,5 +33,6 @@ public class ResourceList {
     public static String windowTitle = "OpenMW Log Visualizator";
     
     public static String logLocation = "";
+    public static String caveLocation = "cave.jpg";
     
 }
