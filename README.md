@@ -5,4 +5,4 @@ This app visualizes the activity (i.e loaded cells) from the last OpenMW log on 
 - selecting custom openmw.log
 - saving to gif
 
-![alt text](https://files.catbox.moe/f8fnr0.gif)
+![alt text](https://files.catbox.moe/k6gb1m.gif)
